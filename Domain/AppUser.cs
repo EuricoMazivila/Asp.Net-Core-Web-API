@@ -2,7 +2,7 @@
 
 namespace Domain
 {
-    public class AppUser : IdentityUser
+    public sealed class AppUser: IdentityUser
     {
         public string FullName { get; set; }
     }
