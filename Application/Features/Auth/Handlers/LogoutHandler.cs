@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.DTOs;
@@ -31,7 +32,8 @@ namespace Application.Features.Auth.Handlers
 
             if (user == null)
             {
-                throw new Exception("User not found");
+                throw new WebException("User not Found", 
+                    (WebExceptionStatus) HttpStatusCode.NotFound);
             }
 
             return new LoginDto

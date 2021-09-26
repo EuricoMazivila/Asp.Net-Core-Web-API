@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.DTOs;
@@ -37,7 +38,8 @@ namespace Application.Features.Auth.Handlers
 
             if (user == null)
             {
-                throw new Exception("Fail to login");
+                throw new WebException("Fail to login, user not found", 
+                    (WebExceptionStatus) HttpStatusCode.NotFound);
             }
 
             var result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
@@ -53,7 +55,8 @@ namespace Application.Features.Auth.Handlers
                 };
             }
 
-            throw new Exception("Fail to login");
+            throw new WebException("Login Failed", 
+                (WebExceptionStatus) HttpStatusCode.BadRequest);
         }
     }
 }

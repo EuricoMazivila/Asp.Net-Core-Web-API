@@ -1,4 +1,5 @@
 using API.Extensions;
+using API.Middleware;
 using Application.Features.Auth.RequestModels;
 using FluentValidation.AspNetCore;
 using MediatR;
@@ -45,6 +46,8 @@ namespace API
 
             }
             
+            app.UseMiddleware<ExceptionMiddleware>();   
+            app.UseStatusCodePagesWithReExecute("/errors/{0}");
             app.UseCors("CorsPolicy");
             //app.UseHttpsRedirection();
             app.UseRouting();
