@@ -1,6 +1,7 @@
 using API.Extensions;
 using API.Middleware;
 using Application.Features.Auth.RequestModels;
+using Application.Helpers;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -34,6 +35,7 @@ namespace API
             services.AddApplicationServices();
             services.AddIdentityServices(Configuration);
             services.AddMediatR(typeof(LoginCommand).Assembly);
+            services.AddAutoMapper(typeof(MappingProfiles));
             services.AddSwaggerDocumentation();
         }
 
