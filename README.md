@@ -1,5 +1,5 @@
 # Asp.Net-Core-Web-API
-This project is created using Asp.Net Core Framework web API and Clean Architecture for organization and separation concepts in API.   
+This project is created using Asp.Net Core Framework web API.   
 Implemented or created this project using: 
 •	SOLID principles 
 •	Clean Architecture
