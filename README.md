@@ -4,9 +4,13 @@ Implemented or created this project using:
 •	SOLID principles 
 •	Clean Architecture
 •	MediatoR
+•	Entity Framework Core
 •	Identity Core
 •	JWT
-•	Entity Framework Core
+•	Generic Repository Pattern
+•	Specification Pattern
+•	Unit of Work Pattern
 •	Command and Query Responsibility Segregation (CQRS) Pattern 
 •	Support Multiple Database (SQL Server, MySQL, PostgreSQL)
+•	Error Handling
 
