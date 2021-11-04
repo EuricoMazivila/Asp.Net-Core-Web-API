@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using Application.DTOs;
 using Application.Errors;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +14,13 @@ namespace API.Controllers
     {
         public IActionResult Error(HttpStatusCode code)
         {
-            return new ObjectResult(new ApiResponse(code));
+            var error = new ApiResponse(code);
+            var errorReturn = new ApiResponseDto
+            {
+              ErrorMessage  = error.ErrorMessage,
+              StatusCode = error.StatusCode
+            };
+            return new ObjectResult(errorReturn);
         }
     }
 }

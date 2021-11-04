@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Application.DTOs;
+using Application.Errors;
 using Application.Features.Users.RequestModels;
 using AutoMapper;
 using Domain;
@@ -27,9 +28,8 @@ namespace Application.Features.Users.Handlers
 
             if (user != null)
             {
-                throw new WebException($"Email {request.Email} " +
-                                       $"has been used to create another account.", 
-                    (WebExceptionStatus) HttpStatusCode.BadRequest);
+                throw new ApiException(HttpStatusCode.BadRequest, $"Email {request.Email} " +
+                                                                  $"has been used to create another account.");
             }
             
             user = new AppUser
@@ -47,9 +47,8 @@ namespace Application.Features.Users.Handlers
             {
                 return _mapper.Map<AppUser, UserDto>(user);
             }
-
-            throw new WebException("Fail to create new user", 
-                (WebExceptionStatus) HttpStatusCode.InternalServerError);
+            
+            throw new ApiException(HttpStatusCode.InternalServerError,"Fail to create new user");
         }
     }
 }

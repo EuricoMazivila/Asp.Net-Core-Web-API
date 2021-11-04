@@ -4,6 +4,7 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.DTOs;
+using Application.Errors;
 using Application.Features.Auth.RequestModels;
 using Application.Interfaces;
 using Domain;
@@ -32,8 +33,7 @@ namespace Application.Features.Auth.Handlers
 
             if (user == null)
             {
-                throw new WebException("User not Found", 
-                    (WebExceptionStatus) HttpStatusCode.NotFound);
+                throw new ApiException(HttpStatusCode.NotFound, "Fail to logout, user not found");
             }
 
             return new LoginDto

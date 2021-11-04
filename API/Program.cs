@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
+using Application.Helpers;
 using Domain;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -37,6 +39,9 @@ namespace API
                 {
                     var logger = loggerFactory.CreateLogger<Program>();
                     logger.LogError(e, "An error occured during creating data from seeds");
+                    var configuration = services.GetRequiredService<IConfiguration>();
+                    FileErrorHelper.SaveError(configuration, (int)HttpStatusCode.InternalServerError, 
+                        "An error occurred during creating data from seeds", e.Message);
                 }
             }
             host.Run();

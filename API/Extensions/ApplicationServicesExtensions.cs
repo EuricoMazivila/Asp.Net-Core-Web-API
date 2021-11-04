@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Application.DTOs;
 using Application.Errors;
 using Application.Interfaces;
 using Infrastructure.Security;
@@ -26,8 +27,15 @@ namespace API.Extensions
                     {
                         Errors = errors
                     };
+                    
+                    var errorResponseReturn = new ApiValidationErrorResponseDto
+                    {
+                      Errors  = errorResponse.Errors,
+                      ErrorMessage = errorResponse.ErrorMessage,
+                      StatusCode = errorResponse.StatusCode
+                    };
 
-                    return new BadRequestObjectResult(errorResponse);
+                    return new BadRequestObjectResult(errorResponseReturn);
                 };
             });
             
