@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Application.DTOs;
-using Application.Features.Users.RequestModels;
+using Application.Features.Users.Commands.RequestModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

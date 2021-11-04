@@ -1,7 +1,7 @@
-﻿using Application.Features.Users.RequestModels;
+﻿using Application.Features.Users.Commands.RequestModels;
 using FluentValidation;
 
-namespace Application.Features.Users.Validators
+namespace Application.Features.Users.Commands.Validators
 {
     public class CreateUserValidator : AbstractValidator<CreateUserCommand>
     {

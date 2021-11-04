@@ -1,6 +1,6 @@
 using API.Extensions;
 using API.Middleware;
-using Application.Features.Auth.RequestModels;
+using Application.Features.Auth.Commands.RequestModels;
 using Application.Helpers;
 using FluentValidation.AspNetCore;
 using MediatR;

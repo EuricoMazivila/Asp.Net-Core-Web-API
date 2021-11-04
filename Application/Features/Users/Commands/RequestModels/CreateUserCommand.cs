@@ -1,7 +1,7 @@
 ﻿using Application.DTOs;
 using MediatR;
 
-namespace Application.Features.Users.RequestModels
+namespace Application.Features.Users.Commands.RequestModels
 {
     public class CreateUserCommand : IRequest<UserDto>
     {

@@ -3,13 +3,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.DTOs;
 using Application.Errors;
-using Application.Features.Users.RequestModels;
+using Application.Features.Users.Commands.RequestModels;
 using AutoMapper;
 using Domain;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 
-namespace Application.Features.Users.Handlers
+namespace Application.Features.Users.Commands.Handlers
 {
     public class CreateUserHandler : IRequestHandler<CreateUserCommand, UserDto>
     {

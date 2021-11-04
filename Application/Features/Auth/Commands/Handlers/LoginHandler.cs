@@ -1,11 +1,10 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.DTOs;
 using Application.Errors;
-using Application.Features.Auth.RequestModels;
+using Application.Features.Auth.Commands.RequestModels;
 using Application.Interfaces;
 using Domain;
 using MediatR;
@@ -13,7 +12,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 
-namespace Application.Features.Auth.Handlers
+namespace Application.Features.Auth.Commands.Handlers
 {
     public class LoginHandler : IRequestHandler<LoginCommand, LoginDto>
     {
