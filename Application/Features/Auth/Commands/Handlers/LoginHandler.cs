@@ -10,7 +10,6 @@ using Domain;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Persistence;
 
 namespace Application.Features.Auth.Commands.Handlers
 {
@@ -19,15 +18,13 @@ namespace Application.Features.Auth.Commands.Handlers
         private readonly SignInManager<AppUser> _signInManager;
         private readonly UserManager<AppUser> _userManager;
         private readonly IJwtGenerator _jwtGenerator;
-        private readonly DataContext _context;
 
         public LoginHandler(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, 
-            IJwtGenerator jwtGenerator, DataContext context)
+            IJwtGenerator jwtGenerator)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _jwtGenerator = jwtGenerator;
-            _context = context;
         }
         
         public async Task<LoginDto> Handle(LoginCommand request, CancellationToken cancellationToken)
@@ -44,7 +41,7 @@ namespace Application.Features.Auth.Commands.Handlers
             var result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
 
             if (result.Succeeded)
-            {
+            { 
                 return new LoginDto
                 {
                     FullName = user.FullName,

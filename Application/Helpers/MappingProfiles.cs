@@ -8,6 +8,7 @@ namespace Application.Helpers
     {
         public MappingProfiles()
         {
+            CreateMap<AppUser, LoginDto>();
             CreateMap<AppUser, UserDto>();
         }
     }
