@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -41,6 +42,34 @@ namespace Infrastructure.Data
         public void Delete(T obj)
         {
             _table.Remove(obj);
+        }
+
+        public async Task<T> GetEntityWithSpecAsync(ISpecification<T> spec)
+        {
+            T data = await ApplySpecification(spec).FirstOrDefaultAsync();
+            return data;
+        }
+
+        public async Task<T> GetLastEntityWithSpecAsync(ISpecification<T> spec)
+        {
+            T data = await ApplySpecification(spec).LastOrDefaultAsync();
+            return data;
+        }
+
+        public async Task<IReadOnlyList<T>> ListAllWithSpecAsync(ISpecification<T> spec)
+        {
+            List<T> data = await ApplySpecification(spec).ToListAsync();
+            return data;
+        }
+
+        public async Task<int> CountAsync(ISpecification<T> spec)
+        {
+            return await ApplySpecification(spec).CountAsync();
+        }
+
+        private IQueryable<T> ApplySpecification(ISpecification<T> spec)
+        {
+            return SpecificationEvaluator<T>.GetQuery(_table.AsQueryable(), spec);
         }
     }
 }
