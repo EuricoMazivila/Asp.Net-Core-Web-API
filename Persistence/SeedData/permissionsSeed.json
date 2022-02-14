@@ -1,0 +1,42 @@
+[
+  {
+    "Name": "AddRole",
+    "Description": "Add Role"
+  },
+  {
+    "Name": "ListRoles",
+    "Description": "List Roles"
+  },
+  {
+    "Name": "EditRole",
+    "Description": "Edit Role"
+  },
+  {
+    "Name": "RemoveRole",
+    "Description": "Remove Role"
+  },
+  {
+    "Name": "ListPermissions",
+    "Description": "List Permissions"
+  },
+  {
+    "Name": "CreateRolePermissions",
+    "Description": "Create Role Permissions"
+  },
+  {
+    "Name": "ListRolePermissions",
+    "Description": "List Role Permissions"
+  },
+  {
+    "Name": "RemoveRolePermissions",
+    "Description": "Remove Role Permissions"
+  },
+  {
+    "Name": "CreateUser",
+    "Description": "Create User"
+  },
+  {
+    "Name": "ListUsers",
+    "Description": "ListUsers"
+  }
+]

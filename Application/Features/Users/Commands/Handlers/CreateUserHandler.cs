@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Application.DTOs;
 using Application.Errors;
 using Application.Features.Users.Commands.RequestModels;
+using Application.Interfaces;
 using AutoMapper;
 using Domain;
 using MediatR;
@@ -15,11 +16,14 @@ namespace Application.Features.Users.Commands.Handlers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CreateUserHandler(UserManager<AppUser> userManager, IMapper mapper)
+        public CreateUserHandler(UserManager<AppUser> userManager, IMapper mapper, 
+            IUnitOfWork unitOfWork)
         {
             _userManager = userManager;
             _mapper = mapper;
+            _unitOfWork = unitOfWork;
         }
         
         public async Task<UserDto> Handle(CreateUserCommand request, CancellationToken cancellationToken)
@@ -32,13 +36,22 @@ namespace Application.Features.Users.Commands.Handlers
                                                                   $"has been used to create another account.");
             }
             
+            var role = await _unitOfWork.Repository<ApplicationRole>().GetByIdAsync(request.RoleId);
+
+            if (role == null)
+            {
+                throw new ApiException(HttpStatusCode.NotFound, 
+                    "Fail Role not found!");
+            }
+            
             user = new AppUser
             {
                 Email = request.Email,
                 FullName = request.FullName,
                 UserName = request.Email,
                 PhoneNumber = request.PhoneNumber,
-                EmailConfirmed = true
+                EmailConfirmed = true,
+                ApplicationRole = role
             };
 
             var result = await _userManager.CreateAsync(user, request.Password);

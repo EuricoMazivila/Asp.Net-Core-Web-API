@@ -11,13 +11,14 @@ namespace API.Controllers
     public class UsersController : BaseController
     {
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "CreateUser")]
         public async Task<ActionResult<UserDto>> CreateUser(CreateUserCommand command)
         {
             return await Mediator.Send(command);
         }
 
         [HttpGet]
+        [Authorize(Roles = "ListUsers")]
         public async Task<IReadOnlyList<UserDto>> ListAllUsers()
         {
             return await Mediator.Send(new ListAllUsersQuery());

@@ -2,13 +2,16 @@ using API.Extensions;
 using API.Middleware;
 using Application.Features.Auth.Commands.RequestModels;
 using Application.Helpers;
+using Domain;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Persistence;
 
 namespace API
 {
@@ -32,7 +35,9 @@ namespace API
                     f.DisableDataAnnotationsValidation = true;
                 });
             services.AddControllers();
+            services.AddMemoryCache();
             services.AddApplicationServices();
+            services.AddIdentityCore<AppUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<DataContext>();
             services.AddIdentityServices(Configuration);
             services.AddMediatR(typeof(LoginCommand).Assembly);
             services.AddAutoMapper(typeof(MappingProfiles));

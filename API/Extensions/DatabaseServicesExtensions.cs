@@ -35,7 +35,7 @@ namespace API.Extensions
                     services.AddDbContext<DataContext, DataContextPostGreSql>(ConfigurePostGreSql);
                     break;
                 default:
-                    Console.WriteLine("Erro");
+                    Console.WriteLine("Error, Data Type not found");
                     break;
             }
             

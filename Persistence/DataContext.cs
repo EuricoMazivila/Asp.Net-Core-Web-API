@@ -10,6 +10,10 @@ namespace Persistence
         {
         }
 
+        public DbSet<ApplicationRole> ApplicationRoles { get; set; }
+        public DbSet<ApplicationPermission> ApplicationPermissions { get; set; }
+        public DbSet<ApplicationRolePermission> ApplicationRolePermissions { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

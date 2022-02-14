@@ -8,7 +8,7 @@ namespace API.Controllers
 {
     public class AuthController : BaseController
     {
-        [HttpPost("login")]
+        [HttpPost]
         [AllowAnonymous]
         public async Task<ActionResult<LoginDto>> Login(LoginCommand command)
         {

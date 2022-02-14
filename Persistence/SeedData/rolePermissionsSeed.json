@@ -1,0 +1,17 @@
+[
+  {
+    "Role": "SystemAdministrator",
+    "Permissions": [
+      "AddRole",
+      "ListRoles",
+      "EditRole",
+      "RemoveRole",
+      "ListPermissions",
+      "CreateRolePermissions",
+      "ListRolePermissions",
+      "RemoveRolePermissions",
+      "CreateUser",
+      "ListUsers"
+    ]
+  } 
+]
