@@ -7,6 +7,7 @@ Implemented or created this project using:
   •	Entity Framework Core
   •	Identity Core
   •	JWT
+  • Role Based Authorization
   •	Generic Repository Pattern
   •	Specification Pattern
   •	Unit of Work Pattern
