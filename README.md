@@ -1,5 +1,5 @@
 # Asp.Net-Core-Web-API
-This project is created using the Asp.Net Core Framework web API from .NET 5.0.   
+This project is created using the Asp.Net Core web API from .NET 5.0.   
 Implemented or created this project using: 
   •	SOLID principles 
   •	Clean Architecture
