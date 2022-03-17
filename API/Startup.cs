@@ -35,6 +35,11 @@ namespace API
                     f.DisableDataAnnotationsValidation = true;
                 });
             services.AddControllers();
+            services.AddCors(options => {
+                options.AddPolicy("CorsPolicy", policy => {
+                    policy.AllowAnyHeader().AllowMethods().WithOrigin("https://localhost:4200"); // You have to indicate the Client Allowed URL 
+                });
+            });
             services.AddMemoryCache();
             services.AddApplicationServices();
             services.AddIdentityCore<AppUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<DataContext>();
